@@ -14,7 +14,7 @@ interface Role {
 const roles: Role[] = [
   {
     title: "human resources rep",
-    company: "company name",
+    company: "jes",
     period: "2024 — present",
     description:
       "managing full-cycle staffing for hotels, restaurants, and resorts. sourcing and placing candidates across hospitality roles, coordinating interviews, handling onboarding, and building relationships with hiring managers to keep operations fully staffed and running smooth.",
