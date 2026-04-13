@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #1C1525;
+  --color-foreground: #f5f0eb;
+
+  /* hello kitty pinks */
+  --color-pink: #FFB5C8;
+  --color-pink-deep: #FF8FAE;
+  --color-pink-blush: #FFF0F3;
+  --color-pink-soft: #FFD6E0;
+
+  /* accents */
+  --color-lime: #c8f7a0;
+  --color-lavender: #c4b5fd;
+  --color-mint: #a7f3d0;
+  --color-peach: #fcd5ce;
+
+  /* backgrounds */
+  --color-off-white: #f5f0eb;
+  --color-dark: #1C1525;
+  --color-dark-elevated: #241C30;
+  --color-dark-card: #2D2439;
+  --color-dark-border: #3D3350;
+  --color-muted: #9B8FA8;
+  --color-muted-light: #B8ADCC;
+
+  --font-sans: var(--font-body);
+  --font-pixel: var(--font-pixel);
+  --font-display: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  text-transform: lowercase;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-pink);
+  color: var(--color-dark);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-card);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-pink);
+}
+
+/* pixel grid background */
+.pixel-grid {
+  background-image:
+    linear-gradient(rgba(255, 181, 200, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 181, 200, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* scanline overlay */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* pixel border using stepped box-shadow */
+.pixel-border {
+  box-shadow:
+    4px 0 0 0 var(--color-dark-border),
+    -4px 0 0 0 var(--color-dark-border),
+    0 4px 0 0 var(--color-dark-border),
+    0 -4px 0 0 var(--color-dark-border);
+}
+
+.pixel-border-pink {
+  box-shadow:
+    4px 0 0 0 var(--color-pink),
+    -4px 0 0 0 var(--color-pink),
+    0 4px 0 0 var(--color-pink),
+    0 -4px 0 0 var(--color-pink);
+}
+
+/* sparkle animation */
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+/* pixel heart via box-shadow */
+.pixel-heart {
+  width: 4px;
+  height: 4px;
+  background: var(--color-pink);
+  box-shadow:
+    4px 0 0 var(--color-pink),
+    8px 0 0 var(--color-pink),
+    16px 0 0 var(--color-pink),
+    20px 0 0 var(--color-pink),
+    0 4px 0 var(--color-pink),
+    4px 4px 0 var(--color-pink),
+    8px 4px 0 var(--color-pink),
+    12px 4px 0 var(--color-pink),
+    16px 4px 0 var(--color-pink),
+    20px 4px 0 var(--color-pink),
+    24px 4px 0 var(--color-pink),
+    0 8px 0 var(--color-pink),
+    4px 8px 0 var(--color-pink),
+    8px 8px 0 var(--color-pink),
+    12px 8px 0 var(--color-pink),
+    16px 8px 0 var(--color-pink),
+    20px 8px 0 var(--color-pink),
+    24px 8px 0 var(--color-pink),
+    4px 12px 0 var(--color-pink),
+    8px 12px 0 var(--color-pink),
+    12px 12px 0 var(--color-pink),
+    16px 12px 0 var(--color-pink),
+    20px 12px 0 var(--color-pink),
+    8px 16px 0 var(--color-pink),
+    12px 16px 0 var(--color-pink),
+    16px 16px 0 var(--color-pink),
+    12px 20px 0 var(--color-pink);
+  image-rendering: pixelated;
+}
+
+/* pixel star */
+.pixel-star {
+  width: 4px;
+  height: 4px;
+  background: var(--color-lime);
+  image-rendering: pixelated;
+  box-shadow:
+    0 -8px 0 var(--color-lime),
+    0 8px 0 var(--color-lime),
+    -8px 0 0 var(--color-lime),
+    8px 0 0 var(--color-lime),
+    -4px -4px 0 var(--color-lime),
+    4px -4px 0 var(--color-lime),
+    -4px 4px 0 var(--color-lime),
+    4px 4px 0 var(--color-lime);
+}
