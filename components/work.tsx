@@ -53,22 +53,22 @@ const roles: Role[] = [
 
 const slideUp = {
   hidden: { opacity: 0, y: 50 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const slideRight = {
   hidden: { opacity: 0, x: -40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const slideLeft = {
   hidden: { opacity: 0, x: 40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const flip3D = {
   hidden: { opacity: 0, rotateY: -25, x: -30 },
-  show: { opacity: 1, rotateY: 0, x: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, rotateY: 0, x: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 const cardVariants = [slideRight, flip3D, slideLeft, slideUp];
