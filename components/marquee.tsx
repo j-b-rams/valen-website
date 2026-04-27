@@ -7,7 +7,7 @@ export function Marquee({ words, direction = "left" }: { words: string[]; direct
   const repeated = text.repeat(4);
 
   return (
-    <div className="overflow-hidden py-6 bg-surface transition-colors duration-400 border-y border-line">
+    <div className="overflow-hidden py-6 bg-surface transition-colors duration-400 border-y border-line shadow-inner-soft">
       <motion.div
         animate={{ x: direction === "left" ? [0, "-50%"] : ["-50%", 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}

@@ -91,11 +91,11 @@ export function Work() {
       >
         <motion.div
           variants={slideRight}
-          className="h-[3px] w-12 bg-primary rounded-full mb-6"
+          className="h-[3px] w-12 bg-primary rounded-full mb-6 shadow-glow"
         />
         <motion.h2
           variants={slideUp}
-          className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-ink italic tracking-tight mb-3 transition-colors duration-400"
+          className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-ink italic tracking-tight mb-3 transition-colors duration-400 text-shadow-sm"
         >
           where i&apos;ve been
         </motion.h2>
@@ -117,7 +117,7 @@ export function Work() {
             style={{ transformStyle: "preserve-3d" }}
           >
             <TiltCard tiltAmount={6} className="group">
-              <div className="relative p-6 md:p-8 bg-surface-card border border-line rounded-sm hover:border-primary-subtle transition-all duration-300">
+              <div className="relative p-6 md:p-8 bg-surface-card border border-line rounded-sm hover:border-primary-subtle shadow-card hover:shadow-card-hover transition-all duration-300">
                 <motion.div
                   className="absolute top-0 left-0 w-1 h-full rounded-l-sm"
                   style={{ backgroundColor: "var(--primary)" }}
@@ -173,7 +173,7 @@ export function Work() {
                     <Magnetic key={tag} strength={0.15}>
                       <motion.span
                         variants={tagPop}
-                        className="text-[10px] tracking-[0.1em] px-3 py-1.5 border border-line rounded-full text-ink-muted hover:text-primary hover:border-primary-faint transition-colors cursor-default"
+                        className="text-[10px] tracking-[0.1em] px-3 py-1.5 border border-line rounded-full text-ink-muted hover:text-primary hover:border-primary-faint shadow-soft hover:shadow-glow transition-all cursor-default"
                       >
                         {tag}
                       </motion.span>

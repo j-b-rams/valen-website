@@ -42,7 +42,7 @@ export function Navigation() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.2 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-surface-blur backdrop-blur-md border-b border-line" : "bg-transparent"
+        scrolled ? "bg-surface-blur backdrop-blur-md border-b border-line shadow-nav" : "bg-transparent"
       }`}
     >
       <div className="max-w-[1200px] mx-auto flex items-center justify-between px-6 md:px-12 lg:px-24 py-4">
@@ -68,7 +68,7 @@ export function Navigation() {
           ))}
           <button
             onClick={toggle}
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-line hover:border-primary-subtle transition-all text-ink-muted hover:text-primary cursor-pointer"
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-line hover:border-primary-subtle shadow-soft hover:shadow-glow transition-all text-ink-muted hover:text-primary cursor-pointer"
             aria-label="toggle theme"
           >
             {theme === "light" ? (

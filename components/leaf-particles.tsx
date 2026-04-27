@@ -60,7 +60,7 @@ export function LeafParticles() {
       {LEAVES.map((leaf) => (
         <motion.div
           key={leaf.id}
-          className="absolute"
+          className="absolute drop-shadow-icon"
           style={{ left: `${leaf.x}%`, top: `${leaf.startY}%` }}
           animate={{
             y: ["0vh", "110vh"],

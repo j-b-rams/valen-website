@@ -19,7 +19,7 @@ function BackdropLeaf({
       initial={{ opacity: 0, scale: 0.7, rotate: -10 }}
       animate={{ opacity: 1, scale: 1, rotate: 0 }}
       transition={{ duration: 1.4, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={`absolute pointer-events-none ${className}`}
+      className={`absolute pointer-events-none drop-shadow-icon ${className}`}
       viewBox="0 0 120 160"
       fill="none"
     >
@@ -131,12 +131,12 @@ export function Hero() {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="h-[3px] w-12 bg-primary mb-10 rounded-full"
+          className="h-[3px] w-12 bg-primary mb-10 rounded-full shadow-glow"
         />
 
         {/* character-by-character name reveal */}
         <motion.div style={{ y: nameY }}>
-          <h1 className="font-[family-name:var(--font-display)] text-6xl sm:text-7xl md:text-9xl tracking-tighter leading-[0.95] italic text-ink transition-colors duration-400 flex overflow-hidden">
+          <h1 className="font-[family-name:var(--font-display)] text-6xl sm:text-7xl md:text-9xl tracking-tighter leading-[0.95] italic text-ink transition-colors duration-400 flex overflow-hidden text-shadow-hero">
             {nameChars.map((char, i) => (
               <motion.span
                 key={i}

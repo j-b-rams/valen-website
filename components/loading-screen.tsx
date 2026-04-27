@@ -91,7 +91,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="font-[family-name:var(--font-display)] text-7xl md:text-9xl italic text-ink tracking-tighter leading-none mb-2 transition-colors duration-400"
+          className="font-[family-name:var(--font-display)] text-7xl md:text-9xl italic text-ink tracking-tighter leading-none mb-2 transition-colors duration-400 text-shadow-hero"
         >
           valen
         </motion.h1>
@@ -101,7 +101,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-          className="w-16 h-px bg-primary my-6 origin-center"
+          className="w-16 h-px bg-primary my-6 origin-center shadow-glow"
         />
 
         {/* tagline */}
@@ -115,7 +115,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
         </motion.p>
 
         {/* progress line */}
-        <div className="w-32 h-px bg-line rounded-full overflow-hidden">
+        <div className="w-32 h-px bg-line rounded-full overflow-hidden shadow-soft">
           <motion.div
             className="h-full bg-primary rounded-full origin-left"
             animate={{ scaleX: progress / 100 }}

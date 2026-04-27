@@ -61,11 +61,11 @@ export function Certifications() {
       >
         <motion.div
           variants={slideRight}
-          className="h-[3px] w-12 bg-fern rounded-full mb-6"
+          className="h-[3px] w-12 bg-fern rounded-full mb-6 shadow-glow"
         />
         <motion.h2
           variants={slideUp}
-          className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-ink italic tracking-tight mb-3 transition-colors duration-400"
+          className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-ink italic tracking-tight mb-3 transition-colors duration-400 text-shadow-sm"
         >
           certifications
         </motion.h2>
@@ -92,7 +92,7 @@ export function Certifications() {
             style={{ transformStyle: "preserve-3d" }}
           >
             <TiltCard tiltAmount={12} className="group cursor-default h-full">
-              <div className="p-6 md:p-8 bg-surface-card border border-line rounded-sm hover:border-primary-subtle transition-all duration-300 text-center relative overflow-hidden h-full">
+              <div className="p-6 md:p-8 bg-surface-card border border-line rounded-sm hover:border-primary-subtle shadow-card hover:shadow-card-hover transition-all duration-300 text-center relative overflow-hidden h-full">
                 {/* hover glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary-faded to-transparent" />
 
@@ -102,7 +102,7 @@ export function Certifications() {
                     scale: [1, 1.15, 1],
                     transition: { duration: 0.5 },
                   }}
-                  className="relative z-10 w-14 h-14 mx-auto mb-5 rounded-sm bg-primary-faded flex items-center justify-center group-hover:bg-primary transition-colors duration-300"
+                  className="relative z-10 w-14 h-14 mx-auto mb-5 rounded-sm bg-primary-faded flex items-center justify-center group-hover:bg-primary shadow-soft group-hover:shadow-elevated transition-all duration-300"
                   style={{ transform: "translateZ(30px)" }}
                 >
                   <span className="font-[family-name:var(--font-display)] text-lg text-primary group-hover:text-surface font-bold italic transition-colors duration-300">
@@ -133,7 +133,7 @@ export function Certifications() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="mt-24 pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors duration-400"
+        className="mt-24 pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors duration-400 shadow-inner-soft"
       >
         <p className="text-[11px] text-ink-faint tracking-[0.1em]">
           made with care + good taste
