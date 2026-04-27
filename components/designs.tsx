@@ -2,145 +2,145 @@
 
 import { motion } from "framer-motion";
 import { SectionWrapper } from "./section-wrapper";
+import { ScatteredDots } from "./scattered-dots";
+import { TiltCard } from "./tilt-card";
 
-interface DesignItem {
-  title: string;
-  category: string;
-  gradient: string;
-  accent: string;
+interface Certification {
+  name: string;
+  issuer: string;
+  icon: string;
 }
 
-const designs: DesignItem[] = [
-  {
-    title: "bloom identity",
-    category: "branding",
-    gradient: "from-pink/20 to-pink-deep/10",
-    accent: "text-pink",
-  },
-  {
-    title: "midnight collection",
-    category: "illustration",
-    gradient: "from-lavender/20 to-lavender/8",
-    accent: "text-lavender",
-  },
-  {
-    title: "sunroom editorial",
-    category: "layout",
-    gradient: "from-peach/20 to-peach/8",
-    accent: "text-peach",
-  },
-  {
-    title: "verde campaign",
-    category: "art direction",
-    gradient: "from-lime/12 to-mint/12",
-    accent: "text-lime",
-  },
-  {
-    title: "soft focus series",
-    category: "photography",
-    gradient: "from-pink-soft/20 to-lavender/10",
-    accent: "text-pink-soft",
-  },
-  {
-    title: "new wave brand",
-    category: "branding",
-    gradient: "from-mint/12 to-lime/8",
-    accent: "text-mint",
-  },
+const certifications: Certification[] = [
+  { name: "adobe indesign", issuer: "adobe", icon: "Id" },
+  { name: "adobe photoshop", issuer: "adobe", icon: "Ps" },
+  { name: "adobe after effects", issuer: "adobe", icon: "Ae" },
+  { name: "adobe illustrator", issuer: "adobe", icon: "Ai" },
+  { name: "canva", issuer: "canva", icon: "Cv" },
+  { name: "blender", issuer: "blender", icon: "Bl" },
+  { name: "ibis paint", issuer: "ibs", icon: "ibs" },
+  { name: "quickbooks", issuer: "intuit", icon: "Qb" },
+  { name: "microsoft excel", issuer: "microsoft", icon: "Ex" },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-} as const;
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+const slideUp = {
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
 
-export function Designs() {
+const slideRight = {
+  hidden: { opacity: 0, x: -40 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const cardPop = {
+  hidden: { opacity: 0, y: 40, scale: 0.85, rotateX: -15 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotateX: 0,
+    transition: {
+      duration: 0.7,
+      delay: i * 0.07,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+export function Certifications() {
   return (
-    <SectionWrapper id="designs">
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="font-[family-name:var(--font-pixel)] text-xs text-lavender tracking-wider mb-4"
-      >
-        {"// designs"}
-      </motion.p>
-
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="font-[family-name:var(--font-display)] text-2xl md:text-3xl text-off-white mb-6"
-      >
-        inventory
-      </motion.h2>
-
-      <motion.p
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-muted text-base max-w-2xl mb-14 leading-relaxed"
-      >
-        a collection of projects, experiments, and things that felt right while
-        making them.
-      </motion.p>
+    <SectionWrapper id="certifications" className="relative">
+      <ScatteredDots />
 
       <motion.div
-        variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ staggerChildren: 0.12 }}
       >
-        {designs.map((d) => (
+        <motion.div
+          variants={slideRight}
+          className="h-[3px] w-12 bg-fern rounded-full mb-6"
+        />
+        <motion.h2
+          variants={slideUp}
+          className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-ink italic tracking-tight mb-3 transition-colors duration-400"
+        >
+          certifications
+        </motion.h2>
+        <motion.p
+          variants={slideUp}
+          className="font-[family-name:var(--font-accent)] text-ink-muted text-base max-w-2xl mb-14 leading-relaxed font-light transition-colors duration-400"
+        >
+          tools i know inside and out.
+        </motion.p>
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-40px" }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+        style={{ perspective: "1000px" }}
+      >
+        {certifications.map((cert, i) => (
           <motion.div
-            key={d.title}
-            variants={item}
-            whileHover={{ scale: 1.03, y: -4, transition: { duration: 0.2 } }}
-            className="group cursor-pointer"
+            key={cert.name}
+            custom={i}
+            variants={cardPop}
+            style={{ transformStyle: "preserve-3d" }}
           >
-            <div
-              className={`aspect-[4/3] bg-gradient-to-br ${d.gradient} border-2 border-dark-border/50 group-hover:border-pink/30 transition-all duration-300 flex items-end p-5 relative overflow-hidden`}
-            >
-              <div className="w-full relative z-10">
-                <p
-                  className={`font-[family-name:var(--font-pixel)] text-[10px] ${d.accent} mb-2 tracking-wider`}
+            <TiltCard tiltAmount={12} className="group cursor-default h-full">
+              <div className="p-6 md:p-8 bg-surface-card border border-line rounded-sm hover:border-primary-subtle transition-all duration-300 text-center relative overflow-hidden h-full">
+                {/* hover glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary-faded to-transparent" />
+
+                <motion.div
+                  whileHover={{
+                    rotate: [0, -10, 10, -5, 0],
+                    scale: [1, 1.15, 1],
+                    transition: { duration: 0.5 },
+                  }}
+                  className="relative z-10 w-14 h-14 mx-auto mb-5 rounded-sm bg-primary-faded flex items-center justify-center group-hover:bg-primary transition-colors duration-300"
+                  style={{ transform: "translateZ(30px)" }}
                 >
-                  {d.category}
-                </p>
-                <h3 className="font-[family-name:var(--font-pixel)] text-xs text-off-white">
-                  {d.title}
+                  <span className="font-[family-name:var(--font-display)] text-lg text-primary group-hover:text-surface font-bold italic transition-colors duration-300">
+                    {cert.icon}
+                  </span>
+                </motion.div>
+                <h3
+                  className="relative z-10 font-[family-name:var(--font-display)] text-sm text-ink italic mb-2 transition-colors duration-400"
+                  style={{ transform: "translateZ(15px)" }}
+                >
+                  {cert.name}
                 </h3>
+                <p
+                  className="relative z-10 text-[11px] text-ink-faint tracking-[0.15em] transition-colors duration-400"
+                  style={{ transform: "translateZ(10px)" }}
+                >
+                  certified · {cert.issuer}
+                </p>
               </div>
-            </div>
+            </TiltCard>
           </motion.div>
         ))}
       </motion.div>
 
       {/* footer */}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="mt-24 pt-8 border-t-2 border-dark-border/30 flex flex-col sm:flex-row items-center justify-between gap-4"
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="mt-24 pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors duration-400"
       >
-        <p className="font-[family-name:var(--font-pixel)] text-[10px] text-muted">
-          made with care + a lot of pink
+        <p className="text-[11px] text-ink-faint tracking-[0.1em]">
+          made with care + good taste
         </p>
-        <p className="font-[family-name:var(--font-pixel)] text-[10px] text-muted">
-          <span className="text-pink">v</span> — 2026
+        <p className="text-[11px] text-ink-faint tracking-[0.1em]">
+          <span className="text-primary italic font-[family-name:var(--font-display)] font-bold">v</span>{" "}
+          — 2026
         </p>
       </motion.div>
     </SectionWrapper>

@@ -1,25 +1,41 @@
+"use client";
+
+import { useState, useCallback } from "react";
+import { motion } from "framer-motion";
 import { Navigation } from "@/components/navigation";
 import { Hero } from "@/components/hero";
 import { Work } from "@/components/work";
-import { Designs } from "@/components/designs";
+import { Certifications } from "@/components/designs";
+import { LoadingScreen } from "@/components/loading-screen";
+import { SectionDivider } from "@/components/section-divider";
+import { Marquee } from "@/components/marquee";
+import { CursorTrail } from "@/components/cursor-trail";
 
 export default function Home() {
+  const [loaded, setLoaded] = useState(false);
+
+  const handleLoadComplete = useCallback(() => {
+    setLoaded(true);
+  }, []);
+
   return (
-    <main className="relative pixel-grid">
-      <div className="scanlines" />
-
-      {/* ambient gradient orbs */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[5%] right-[0%] w-[600px] h-[600px] bg-pink/10 rounded-full blur-[180px]" />
-        <div className="absolute top-[35%] -left-[10%] w-[500px] h-[500px] bg-lavender/6 rounded-full blur-[160px]" />
-        <div className="absolute top-[55%] right-[15%] w-[450px] h-[450px] bg-pink-deep/5 rounded-full blur-[170px]" />
-        <div className="absolute top-[80%] left-[5%] w-[400px] h-[400px] bg-mint/4 rounded-full blur-[150px]" />
-      </div>
-
-      <Navigation />
-      <Hero />
-      <Work />
-      <Designs />
-    </main>
+    <>
+      <LoadingScreen onComplete={handleLoadComplete} />
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={loaded ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative grain bg-surface min-h-screen"
+      >
+        <CursorTrail />
+        <Navigation />
+        <Hero />
+        <SectionDivider variant="botanical" />
+        <Work />
+        <Marquee words={["indesign", "photoshop", "after effects", "illustrator", "canva", "blender", "ibis paint", "quickbooks", "excel"]} direction="right" />
+        <SectionDivider variant="lines" />
+        <Certifications />
+      </motion.main>
+    </>
   );
 }

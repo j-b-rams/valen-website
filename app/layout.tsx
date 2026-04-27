@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { silkscreen, pressStart, jakarta } from "@/lib/fonts";
+import { playfair, dmSans, cormorant } from "@/lib/fonts";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,9 +16,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${silkscreen.variable} ${pressStart.variable} ${jakarta.variable} antialiased`}
+      className={`${playfair.variable} ${dmSans.variable} ${cormorant.variable} antialiased`}
+      suppressHydrationWarning
     >
-      <body>{children}</body>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()`,
+          }}
+        />
+      </head>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
