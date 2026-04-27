@@ -72,7 +72,7 @@ const charVariant = {
     transition: {
       duration: 0.7,
       delay: 0.4 + i * 0.08,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as const,
     },
   }),
 };
